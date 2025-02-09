@@ -53,9 +53,6 @@ func colorRetriever(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	mu.Lock()
-	defer mu.Unlock()
-
 	fmt.Printf("getting %s \n", color)
 	for _, c := range dataStore {
 		if c == color {
@@ -95,9 +92,6 @@ func colorMaker(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Printf("making %s \n", request.Color)
-
-	mu.Lock()
-	defer mu.Unlock()
 
 	dataStore = append(dataStore, request.Color)
 	response := ResponseMessage{
