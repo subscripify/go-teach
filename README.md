@@ -26,7 +26,7 @@ teaching wife how to go
     [color.go](color.go#L78)
 
 ## Part 5 Manage Concurrent Updates to data store
-  Checkout the branch Main `git checkout main`
+  Checkout the branch Main `git checkout main` 
   1. Implement the lock for the data store.
     [color.go](color.go#L78)
 

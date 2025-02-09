@@ -53,9 +53,6 @@ func colorRetriever(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	mu.Lock()
-	defer mu.Unlock()
-
 	fmt.Printf("getting %s \n", color)
 	for _, c := range dataStore {
 		if c == color {
