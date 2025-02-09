@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: Color API
+  version: 1.0.0
+  description: An API to manage colors served up by subscripify
+servers:
+  - url: http://enhanced-color-service.subscripify.net
+paths:
+  /color:
+    post:
+      summary: Add a new color
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestMessage'
+      responses:
+        '200':
+          description: Color added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMessage'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMessage'
+  /color/{color}:
+    get:
+      summary: Retrieve a color
+      parameters:
+        - in: path
+          name: color
+          required: true
+          schema:
+            type: string
+          description: The color to retrieve
+      responses:
+        '200':
+          description: Color found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMessage'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMessage'
+        '404':
+          description: Color not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMessage'
+components:
+  schemas:
+    RequestMessage:
+      type: object
+      properties:
+        color:
+          type: string
+      required:
+        - color
+    ResponseMessage:
+      type: object
+      properties:
+        color:
+          type: string
+        message:
+          type: string
